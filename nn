@@ -1,0 +1,100 @@
+<body>
+    <div class="container">
+        
+        <img src=https://www.pinterest.com/pin/992551205374766101/ alt="Kawaii Japanese Dolphin with Sakura Blossom Bouquet" class="dolphin-image"> <!-- Update the path -->
+        <h2>Will you be my Valentine, love ;3?</h2>
+        <button id="yes-button">Yes</button>
+        <button id="no-button">No</button>
+    </div>
+</body>
+
+/* styles.css */
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Comfortaa, cursive;
+}
+
+.container {
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #1e1e1e;  /* Pink color for Valentine's theme */
+    margin-bottom: 10px;
+}
+
+.dolphin-image {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#yes-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#no-button {
+    background-color: #f44336;
+    color: white;
+}
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;  /* Default font */
+    background-color: #FFE4E1;       /* Light pink for Valentine's theme */
+}
+
+const yesButton = document.getElementById('yes-button');
+const noButton = document.getElementById('no-button');
+
+// List of persuasive phrases
+const phrases = [
+    "Are you sure?", 
+    "It will be fun!", 
+    "You're missing out", 
+    "Don't be shy!",
+    "Trust me!",
+    "C'mon babyyy",
+    ":/ ur making me sad"
+];
+let phraseIndex = 0;
+
+// Event listener for the No button
+noButton.addEventListener('click', () => {
+    // Increase the size of the Yes button
+    let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = (currentSize + 2) + 'px';
+
+    // Update No button text with the next phrase
+    noButton.textContent = phrases[phraseIndex];
+    phraseIndex = (phraseIndex + 1) % phrases.length;  // Loop back to start
+});
+
+// Event listener for the Yes button
+yesButton.addEventListener('click', () => {
+    // Hide both buttons
+    yesButton.style.display = 'none';
+    noButton.style.display = 'none';
+
+    // Display the "Yayyy!" phrase
+    const yayMessage = document.createElement('h2');
+    yayMessage.textContent = "Yayyy!";
+    yayMessage.style.color = '#4CAF50';  // Optional styling for the message
+    document.querySelector('.container').appendChild(yayMessage);
+});
